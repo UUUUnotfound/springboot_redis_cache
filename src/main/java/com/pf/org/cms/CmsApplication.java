@@ -63,8 +63,9 @@ public class CmsApplication {
         RedisCacheWriter writer = RedisCacheWriter.lockingRedisCacheWriter(connectionFactory);
         //启动redis缓存的默认配置
         RedisCacheConfiguration configuration =RedisCacheConfiguration.defaultCacheConfig();
-        //设置JDK序列化器
-        configuration=configuration.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new JdkSerializationRedisSerializer()));
+        //设置JackSon序列化器
+        Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
+        configuration = configuration.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer( serializer));
         //禁止前缀
         configuration =configuration.disableKeyPrefix();
         //设置10Min超时
