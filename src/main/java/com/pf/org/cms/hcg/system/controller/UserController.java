@@ -1,16 +1,12 @@
 package com.pf.org.cms.hcg.system.controller;
 
 
-        import com.pf.org.cms.configuration.RedisTest;
-        import com.pf.org.cms.hcg.system.bean.PermissionDO;
         import com.pf.org.cms.hcg.system.bean.UserDO;
         import com.pf.org.cms.hcg.system.service.PermissionService;
         import com.pf.org.cms.hcg.system.service.UserNewService;
         import com.pf.org.cms.manage.RedisManager;
         import io.swagger.annotations.*;
         import org.apache.shiro.SecurityUtils;
-        import org.apache.shiro.authc.AuthenticationException;
-        import org.apache.shiro.authc.IncorrectCredentialsException;
         import org.apache.shiro.authc.UsernamePasswordToken;
 
         import org.apache.shiro.subject.Subject;
@@ -27,10 +23,6 @@ package com.pf.org.cms.hcg.system.controller;
         import javax.servlet.http.HttpServletRequest;
         import javax.servlet.http.HttpServletResponse;
         import javax.servlet.http.HttpSession;
-        import java.io.PrintWriter;
-        import java.io.UnsupportedEncodingException;
-        import java.net.URLEncoder;
-        import java.util.List;
         import java.util.Map;
 
 /**

@@ -36,45 +36,12 @@ public class CmsApplication {
 
 
 
-    @Autowired
-    private RedisConnectionFactory connectionFactory = null ;
-    @Autowired
-    private RedisTemplate redisTemplate ;
 
 
-    //自定义初始化
-    @PostConstruct
-    public void init(){
-        initRedisTemplate();
-    }
-
-    //改变redistemplate对于键的序列化策略
-    private void initRedisTemplate(){
-        RedisSerializer stringSerializer = redisTemplate.getStringSerializer();
-        redisTemplate.setKeySerializer(stringSerializer);
-        redisTemplate.setHashKeySerializer(stringSerializer);
-
-    }
 
 
-    @Bean(name = "redisCacheManager")
-    public RedisCacheManager initRedisCacheManager(){
-        //redis加锁的写入器
-        RedisCacheWriter writer = RedisCacheWriter.lockingRedisCacheWriter(connectionFactory);
-        //启动redis缓存的默认配置
-        RedisCacheConfiguration configuration =RedisCacheConfiguration.defaultCacheConfig();
-        //设置JackSon序列化器
-        Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
-        configuration = configuration.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer( serializer));
-        //禁止前缀
-        configuration =configuration.disableKeyPrefix();
-        //设置10Min超时
-        configuration= configuration.entryTtl(Duration.ofMinutes(10));
-        //创建redis缓存管理器
-        RedisCacheManager redisCacheManager = new RedisCacheManager(writer,configuration);
-        return redisCacheManager ;
 
-    }
+
 
 
 

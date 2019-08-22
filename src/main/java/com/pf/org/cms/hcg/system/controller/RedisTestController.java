@@ -87,8 +87,8 @@ public class RedisTestController {
     public MyRedisDO update(
             @RequestParam("id") Integer id) {
         MyRedisDO myRedisDO = myRedisService.getById(id);
-        myRedisDO.setNote("更改");
-        myRedisDO.setName("更改");
+        myRedisDO.setNote("222");
+        myRedisDO.setName("2222");
         myRedisService.update(myRedisDO);
         return myRedisDO;
     }

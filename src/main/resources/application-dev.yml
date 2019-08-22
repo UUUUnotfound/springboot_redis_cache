@@ -4,7 +4,7 @@ logging:
 spring:
     datasource:
         name: test
-        url: jdbc:mysql://localhost:3306/cms?characterEncoding=utf8
+        url: jdbc:mysql://localhost:3307/cms?characterEncoding=utf8&serverTimezone=Asia/Shanghai
         username: root
         password: 123456
         # 使用druid数据源
